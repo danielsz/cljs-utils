@@ -53,3 +53,9 @@
         p  (.createElement js/document "p")]
     (set! (.-innerHTML p) msg)
     (.appendChild el p)))
+
+(defn to-slug [string]
+  (-> string
+      (clojure.string/split #"\s")
+      (#(clojure.string/join "-" %))
+      (clojure.string/lower-case)))
