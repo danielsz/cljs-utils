@@ -1,5 +1,6 @@
 (ns cljs-utils.core
   (:require [goog.events :as events]
+            [clojure.string :as string]
             [cljs.core.async :as async :refer [<! >! put! take! chan]]))
 
 (defn dev-mode? [port]
@@ -54,8 +55,8 @@
     (set! (.-innerHTML p) msg)
     (.appendChild el p)))
 
-(defn to-slug [string]
-  (-> string
-      (clojure.string/split #"\s")
-      (#(clojure.string/join "-" %))
-      (clojure.string/lower-case)))
+(defn to-slug [str]
+  (-> str
+      (string/split #"\s")
+      (#(string/join "-" %))
+      (string/lower-case)))
