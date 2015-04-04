@@ -10,5 +10,5 @@
 
 ;; (map #(println (.getPath %)) (walk "src" #".*\.clj"))
 (defmacro glob [root glob]
-  (map #(.getPath %) (walk root glob)))
+  (mapv #(.getPath %) (walk root glob)))
 
