@@ -1,14 +1,15 @@
 (ns cljs-utils.core
-  (:require [clojure.java.io :refer [file]]))
+  (:require [clojure.java.io :refer [file]]
+            [clojure.edn :refer [read-string]]))
 
-(defmacro read-file [uri]
-  (slurp uri))
+(comment (defmacro read-file [uri]
+           (slurp uri)))
 
 (defn walk [dirpath pattern]
   (doall (filter #(re-matches pattern (.getName %))
                  (file-seq (file dirpath)))))
 
 ;; (map #(println (.getPath %)) (walk "src" #".*\.clj"))
-(defmacro glob [root glob]
-  (mapv #(.getPath %) (walk root glob)))
+(defmacro slurp-edn [root glob]
+  (mapv #(read-string (slurp (.getPath %))) (walk root glob)))
 
