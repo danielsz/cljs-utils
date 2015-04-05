@@ -9,7 +9,10 @@
   (doall (filter #(re-matches pattern (.getName %))
                  (file-seq (file dirpath)))))
 
-;; (map #(println (.getPath %)) (walk "src" #".*\.clj"))
-(defmacro slurp-edn [root glob]
+;; usage: (slurp-glob "resources/stations" #".*\.edn"))
+(defn slurp-glob [root glob]
   (mapv #(read-string (slurp (.getPath %))) (walk root glob)))
+
+(defmacro slurp-edn [root]
+  (mapv #(read-string (slurp (.getPath %))) (walk root #".*\.edn")))
 
