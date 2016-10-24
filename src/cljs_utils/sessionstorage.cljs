@@ -1,4 +1,5 @@
-(ns cljs-utils.sessionstorage)
+(ns cljs-utils.sessionstorage
+  (:require [clojure.walk :refer [keywordize-keys]]))
 
 (defn set-item!
   "Set `key' in browser's sessionStorage to `val`."
@@ -25,5 +26,5 @@
   "Returns value of `key' from browser's sessionStorage."
   [key]
   (let [item (.getItem (.-sessionStorage js/window) key)]
-    (clojure.walk/keywordize-keys (js->clj (.parse js/JSON item)))))
+    (keywordize-keys (js->clj (.parse js/JSON item)))))
 
