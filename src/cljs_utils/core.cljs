@@ -1,9 +1,8 @@
 (ns cljs-utils.core
   (:require [goog.events :as events]
             [clojure.string :as string]
-            [cljs.core.async :as async :refer [<! >! put! take! chan]]
-            [goog.structs :as structs]
-            [goog.Uri.QueryData :as query]))
+            [cljs.core.async :as async :refer [<! >! put! take! chan]])
+  (:import [goog.Uri QueryData]))
 
 (defn dev-mode? [port]
   "Return boolean if development mode, derived from non-standard port in window.location"
@@ -59,13 +58,9 @@
 
 (defn to-slug [str]
   (-> str
-      (string/split #"\s")
-      (#(string/join "-" %))
-      (string/lower-case)))
+     (string/split #"\s")
+     (#(string/join "-" %))
+     (string/lower-case)))
 
 (defn form-data [xs]
-  (->> xs
-       clj->js
-       (structs/Map.)
-       (query/createFromMap)
-       str))
+  (str (.createFromKeysValues QueryData (clj->js (keys xs)) (clj->js (vals xs)))))

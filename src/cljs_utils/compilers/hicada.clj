@@ -1,9 +1,9 @@
 (ns cljs-utils.compilers.hicada
-  (:require [hicada.compiler]))
+  (:require [hicada.compiler :refer [compile]]))
 
 (defmacro html
   [body]
-  (hicada.compiler/compile body {:create-element 'js/React.createElement
+  (compile body {:create-element 'js/React.createElement
                                  :transform-fn (comp)
                                  :array-children? false}
                                  {} &env))

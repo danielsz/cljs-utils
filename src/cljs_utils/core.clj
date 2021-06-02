@@ -2,9 +2,6 @@
   (:require [clojure.java.io :refer [file]]
             [clojure.edn :as edn]))
 
-(comment (defmacro read-file [uri]
-           (slurp uri)))
-
 (defn walk [dirpath pattern]
   (doall (filter #(re-matches pattern (.getName %))
                  (file-seq (file dirpath)))))
