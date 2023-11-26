@@ -4,8 +4,9 @@
             [cljs.core.async :as async :refer [<! >! put! take! chan]])
   (:import [goog.Uri QueryData]))
 
-(defn dev-mode? [port]
+(defn dev-mode?
   "Return boolean if development mode, derived from non-standard port in window.location"
+  [port]
   (= js/window.location.port (str port)))
 
 (defn by-id
@@ -13,8 +14,9 @@
   [id]
   (.getElementById js/document id))
 
-(defn listen [el type]
+(defn listen
   "listen on js events in a channel and return it"
+  [el type]
   (let [out (chan)]
     (events/listen el type
       (fn [e] (put! out e)))
