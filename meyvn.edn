@@ -5,9 +5,7 @@
  :build-properties {:project-build-sourceEncoding "UTF-8"},
  :packaging {:jar {:enabled true,
                    :gpg {:enabled true},
-                   :sources {:enabled false},
-                   :remote-repository {:id "clojars",
-                                       :url "https://clojars.org/repo"}}},
+                   :sources {:enabled false}}}
  :testing {:enabled false, :tools-deps-alias :test},
  :scm {:enabled false},
  :interactive {:system {:enabled false,
@@ -53,4 +51,6 @@
                                       :main "main.core"},
                       :tools-deps-alias :cljs},
                :kawa {:enabled false}},
+ :distribution-management {:id "clojars",
+                     :url "https://clojars.org/repo"}
  :profiles {:enabled false}}
