@@ -1,6 +1,6 @@
 {:pom {:group-id "org.danielsz",
        :artifact-id "cljs-utils",
-       :version "0.1.6",
+       :version "0.1.7",
        :name "cljs-utils"},
  :build-properties {:project-build-sourceEncoding "UTF-8"},
  :packaging {:jar {:enabled true,

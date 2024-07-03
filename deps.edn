@@ -1,1 +1,2 @@
-{:deps {hicada/hicada {:mvn/version "0.1.9"}}}
+{:deps {hicada/hicada {:mvn/version "0.1.9"}
+        binaryage/devtools {:mvn/version "1.0.7"}}}
