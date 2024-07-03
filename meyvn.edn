@@ -1,11 +1,11 @@
 {:pom {:group-id "org.danielsz",
        :artifact-id "cljs-utils",
        :version "0.1.7",
-       :name "cljs-utils"},
+       :name "cljs-utils"
+       :licenses [{:name "Eclipse Public License -v 1.0"
+                   :url "https://opensource.org/license/epl-1-0/"}]},
  :build-properties {:project-build-sourceEncoding "UTF-8"},
- :packaging {:jar {:enabled true,
-                   :gpg {:enabled true},
-                   :sources {:enabled false}}}
+ :packaging {:jar {:enabled true}}
  :testing {:enabled false, :tools-deps-alias :test},
  :scm {:enabled false},
  :interactive {:system {:enabled false,
@@ -52,5 +52,5 @@
                       :tools-deps-alias :cljs},
                :kawa {:enabled false}},
  :distribution-management {:id "clojars",
-                     :url "https://clojars.org/repo"}
+                           :url "https://clojars.org/repo"}
  :profiles {:enabled false}}
