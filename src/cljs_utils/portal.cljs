@@ -1,10 +1,11 @@
 (ns cljs-utils.portal
-  (:require [portal.web :as p]))
+  (:require [portal.web :as p]
+            [portal.runtime.web.client :refer [Portal]]))
 
 (def portal (atom {}))
 
 (defn toggle []
-  (if (seq @portal)
+  (if (instance? Portal @portal)
     (do (p/close)
         (remove-tap #'p/submit)
         (reset! portal {}))
