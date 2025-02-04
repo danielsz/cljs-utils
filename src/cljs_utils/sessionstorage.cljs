@@ -8,8 +8,10 @@
 
 (defn get-item
   "Returns value of `key' from browser's sessionStorage."
-  [key]
-  (.getItem (.-sessionStorage js/window) key))
+  ([key]
+   (.getItem (.-sessionStorage js/window) key))
+  ([key not-found]
+   (or (get-item key) not-found)))
 
 (defn remove-item!
   "Remove the browser's sessionStorage value for the given `key`"

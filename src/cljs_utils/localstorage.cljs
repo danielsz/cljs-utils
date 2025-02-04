@@ -8,8 +8,10 @@
 
 (defn get-item
   "Returns value of `key' from browser's localStorage."
-  [key]
-  (.getItem (.-localStorage js/window) key))
+  ([key]
+   (.getItem (.-localStorage js/window) key))
+  ([key not-found]
+   (or (get-item key) not-found)))
 
 (defn remove-item!
   "Remove the browser's localStorage value for the given `key`"
